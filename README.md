@@ -1,7 +1,41 @@
 # map_generator
 Generator a map for Bomberman, save and load game map.
 
-### Requirements
+## About
+
+This was made to randomly generate a std::vector<std::vector<char>> containing numbers that represent and object in the game. The Bomberman project will then read this and spawn the correct object in the correct row/col of the game. Allowing for thousands of random levels to be generated.  
+The following is what the numbers represent in the game:
+```
+0 : grass block
+1 : iron block
+2 : brick block
+3 : player
+4 : enemy 1
+5 : enemy 2
+6 : power up brick
+7 : health brick
+```  
+When creating a map, it will generate an output similar to this:
+```
+$> ./create 1 1
+	000000000000000000000000000000000
+	011111111111111111111111111111110
+	013000000000050002000000000002010
+	010121010101010101510101210101210
+	010000002005005000000200000500610
+	010161012101210101010101210101010
+	016000002000020000000202020020010
+	010121010161010101010101210101010
+	012020020020000000000000220020010
+	010101010101010101210101010101010
+	010222000000000000200000002000010
+	010101010101610101010101712101210
+	010200000000000200000000000002010
+	011111111111111111111111111111110
+	000000000000000000000000000000000
+```
+
+## Requirements
 
 This program uses boost and cmake. So on a mac make sure to install with the following commands.
 ```
@@ -9,7 +43,7 @@ brew install boost --c++11
 brew install cmake
 ```
 
-### Setup
+## Setup
 
 To get the program working run the following commands
 ```
@@ -23,7 +57,7 @@ make
 
 Once done, you can now run the executable
 
-### How-to
+## How-to
 
 When running the executable, you give it two arguments. First argument is the seed number.
 Second argument is the map level difficulty.
@@ -38,7 +72,7 @@ an example would be:
 ./create 6 2
 ```
 
-### Functions
+## Functions
 
 To get the dir the map gets saved to, call the following function.
 ```
