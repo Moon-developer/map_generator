@@ -6,7 +6,7 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 11:11:01 by mafernan          #+#    #+#             */
-/*   Updated: 2018/09/06 13:13:38 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/09/06 13:40:03 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int		main(int ac, char **av)
 		// set difficulty to second arguments
 		lvl.difficulty(std::atoi(av[2]));
 		// save results of makeMap to res
+		lvl.dimension(10, 10);
 		res = lvl.makeMap(std::atoi(av[1]));
+		std::cout << "height : " << res.size() << std::endl;
+		std::cout << "width  : " << res[0].size() << std::endl;
 		// print out the map
 		std::cout << "===================== New map =====================" << std::endl;
 		for (size_t i = 0; i < res.size(); i++)

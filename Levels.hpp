@@ -6,7 +6,7 @@
 /*   By: mafernan   <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 11/30/15 by mafernan          #+#    #+#             */
-/*   Updated: 2018/09/06 12:57:23 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/09/06 13:28:19 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ class Levels {
 
 		char			populate( void );
 
-		int				getHeight( void );
-		int				getWidth( void );
 		int				getSeed( void );
 
 	private:

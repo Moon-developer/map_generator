@@ -6,7 +6,7 @@
 /*   By: mafernan   <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 11/30/15 by mafernan          #+#    #+#             */
-/*   Updated: 2018/09/06 13:11:09 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/09/06 13:45:53 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ std::vector<std::vector<char> >	 Levels::makeMap( int seed )
 	result.resize(this->_height + 1);
 	if (this->_debug == 1)
 		std::cout << "creating map" << std::endl;
-	// open file for writing
-	for (int row = 1; row <= this->_height; row++)
+	// loop thru vector and assign a type
+	for (int row = 0; row <= this->_height; row++)
 	{
 		result[row].resize(this->_width);
 		for (int col = 1; col <= this->_width; col++)
@@ -106,7 +106,7 @@ std::vector<std::vector<char> >	 Levels::makeMap( int seed )
 				type = '0';
 			if (this->_debug == 1)
 				std::cout << type << " ";
-			result[row][col] = type;
+			result[row][col - 1] = type;
 		}
 		type = '0';
 		if (this->_debug == 1)
@@ -183,23 +183,16 @@ void	Levels::changeDir( std::string dir)
 	this->_dir = dir;
 }
 
-// get height of map
-int		Levels::getHeight( void )
-{
-	return (this->_height);
-}
-
-// get width of map
-int		Levels::getWidth( void )
-{
-	return (this->_width);
-}
-
 // set a width and height
 void	Levels::dimension(int width, int height)
 {
-	this->_width = width;
-	this->_height = height;
+	if (this->_width >= 10 && this->_height >= 10)
+	{
+		this->_width = width;
+		this->_height = height;
+	}
+	else
+		std::cout << "Throw Error : invalid dimension. Please make them bigger than 10" << std::endl;
 }
 
 // get last seed generated

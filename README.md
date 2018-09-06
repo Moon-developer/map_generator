@@ -62,7 +62,7 @@ Once done, you can now run the executable
 When running the executable, you give it two arguments. First argument is the seed number.
 Second argument is the map level difficulty.
 ```
-./create <seed between 1 - 5> <difficulty>
+./create <seed> <difficulty>
 ```  
 
 seed number greater than 5 or smaller than 1 has been set to randomly generator.
