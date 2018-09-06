@@ -6,7 +6,7 @@
 /*   By: mafernan   <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 11/30/15 by mafernan          #+#    #+#             */
-/*   Updated: 2018/09/05 13:23:50 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/09/06 12:57:23 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 class Levels {
 	public:
+
 		Levels();
 		Levels(Levels const & src);
 		~Levels();
@@ -39,18 +40,23 @@ class Levels {
 
 		std::vector<std::vector<char> >		makeMap( int seed );
 		std::vector<std::vector<char> >		load( void );
-		void								save(std::vector<std::vector<char> > map);
+		std::string							getDir( void );
 
-		std::string		getDir( void );
+		void			save(std::vector<std::vector<char> > map);
 		void			dimension(int width, int height);
 		void			difficulty( int lvl );
 		void			changeDir( std::string dir);
 		void			debug( void );
+
 		char			populate( void );
+
 		int				getHeight( void );
 		int				getWidth( void );
+		int				getSeed( void );
 
 	private:
+
+		int				_seed = 0;
 		int				_debug = 0;
 		int				_width = 33;
 		int				_height = 15;
@@ -59,6 +65,7 @@ class Levels {
 		int				_health = 0;
 		int				_power = 0;
 		int				_lvl = 1;
+
 		std::string		_dir = ".";
 };
 

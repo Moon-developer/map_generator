@@ -74,6 +74,12 @@ an example would be:
 
 ## Functions
 
+To use the functions first create the levels object.
+```
+#include "Levels.hpp"
+
+Levels	LevelObj;
+```  
 To get the dir the map gets saved to, call the following function.
 ```
 LevelObj.getDir( void );
@@ -104,7 +110,7 @@ LevelObj.getWidth();
 ```  
 To generate a map, call the following function.
 ```
-LevelObj.makeMap(1); // give a seed between 1-5, any number other than that it will create a random map
+LevelObj.makeMap(1); // it will generate a given seed if it's greater than zero. zero or below will randomly generate one 
 ```  
 To save the current map, call the following function.
 ```
@@ -114,5 +120,7 @@ To load the map
 ```
 LevelObj.load(); // returns a map from a saved file if saved.
 ```  
-
-
+To get the last seed number used, call the following function
+```
+LevelObj.getSeed();
+```

@@ -6,7 +6,7 @@
 /*   By: mafernan   <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 11/30/15 by mafernan          #+#    #+#             */
-/*   Updated: 2018/09/05 13:26:17 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/09/06 13:11:09 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Levels & Levels::operator=(Levels const & src)
 
 // ========================================================================== //
 
-// randomly place a type
+// randomly select a type
 char	Levels::populate( void )
 {
 	int random = static_cast<int>(rand() % 100);
@@ -63,16 +63,20 @@ char	Levels::populate( void )
 	return ('0');
 }
 
+// generate a random map from seed
 std::vector<std::vector<char> >	 Levels::makeMap( int seed )
 {
 	char			type = '0';
 	int				enemyTotal = this->_enemyTotal;
 	std::vector<std::vector<char> >	result;
 
-	if (seed > 0 && seed <= 5)
-		srand(seed);
+	// check if seed number given is positive
+	if (seed > 0)
+		this->_seed = seed;
 	else
-		srand(time(NULL));
+		this->_seed = time(NULL);
+	// set srand to generate psuedo seed
+	srand(this->_seed);
 	result.resize(this->_height + 1);
 	if (this->_debug == 1)
 		std::cout << "creating map" << std::endl;
@@ -102,7 +106,7 @@ std::vector<std::vector<char> >	 Levels::makeMap( int seed )
 				type = '0';
 			if (this->_debug == 1)
 				std::cout << type << " ";
-			result[row].push_back(type);
+			result[row][col] = type;
 		}
 		type = '0';
 		if (this->_debug == 1)
@@ -123,7 +127,7 @@ std::vector<std::vector<char> >	 Levels::makeMap( int seed )
 	return (result);
 }
 
-//void			Levels::save(std::vector<std::vector<VisibleGameObject *> > visObj)
+// save the map
 void			Levels::save(std::vector<std::vector<char>> map)
 {
 	const Map		temp(map);
@@ -135,6 +139,7 @@ void			Levels::save(std::vector<std::vector<char>> map)
 	oa << temp;
 }
 
+// load the map
 std::vector<std::vector<char> >			Levels::load( void )
 {
 	Map		temp;
@@ -147,8 +152,6 @@ std::vector<std::vector<char> >			Levels::load( void )
 
 	return (temp.getMap());
 }
-
-
 
 // toggle Debug
 void			Levels::debug( void )
@@ -168,7 +171,7 @@ void			Levels::difficulty( int lvl)
 		std::cout << "Throw error : Invalid lvl type" << std::endl;
 }
 
-// get director
+// get directory
 std::string		Levels::getDir( void )
 {
 	return (this->_dir);
@@ -197,4 +200,10 @@ void	Levels::dimension(int width, int height)
 {
 	this->_width = width;
 	this->_height = height;
+}
+
+// get last seed generated
+int		Levels::getSeed( void )
+{
+	return (this->_seed);
 }
