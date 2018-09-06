@@ -6,7 +6,7 @@
 /*   By: mafernan   <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 11/30/15 by mafernan          #+#    #+#             */
-/*   Updated: 2018/09/06 13:28:19 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/09/06 14:34:39 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,8 @@
 # include <iostream>
 # include <fstream>
 # include <vector>
-//# include <boost/archive/text_oarchive.hpp>
-//# include <boost/archive/text_iarchive.hpp>
 # include "Map.hpp"
-
-// block numbers
-// 0 : grass
-// 1 : iron
-// 2 : bricks
-// 3 : player 
-// 4 : enemy 1
-// 5 : enemy 2
-// 6 : power brick
-// 7 : health brick
+# include "Error.hpp"
 
 class Levels {
 	public:

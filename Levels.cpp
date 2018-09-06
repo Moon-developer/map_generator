@@ -6,7 +6,7 @@
 /*   By: mafernan   <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 11/30/15 by mafernan          #+#    #+#             */
-/*   Updated: 2018/09/06 13:45:53 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/09/06 14:45:27 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void			Levels::difficulty( int lvl)
 	if (lvl >= 1 && lvl <= 3)
 		this->_lvl = lvl;
 	else
-		std::cout << "Throw error : Invalid lvl type" << std::endl;
+		Error::InvalidDifficulty(std::to_string(lvl));
 }
 
 // get directory
@@ -186,13 +186,15 @@ void	Levels::changeDir( std::string dir)
 // set a width and height
 void	Levels::dimension(int width, int height)
 {
-	if (this->_width >= 10 && this->_height >= 10)
+	if (width < 10)
+		Error::InvalidSize("Width");
+	else if (height < 10)
+		Error::InvalidSize("Height");
+	else
 	{
 		this->_width = width;
 		this->_height = height;
 	}
-	else
-		std::cout << "Throw Error : invalid dimension. Please make them bigger than 10" << std::endl;
 }
 
 // get last seed generated

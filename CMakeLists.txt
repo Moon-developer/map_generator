@@ -14,6 +14,7 @@ add_executable(
 	main.cpp
 	Levels.cpp
 	Map.cpp
+	Error.cpp
 )
 
 target_link_libraries( ${NAME} PUBLIC ${Boost_LIBRARIES} )
